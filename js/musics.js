@@ -6,7 +6,7 @@ const musics = [
     {music : "아직도 기억하고 있어요", singer : "포레스텔라"},
     {music : "サザンカ", singer : "SEKAI NO OWARI "},
     {music : "도망가자", singer : "선우정아"},
-    {music : "스토커", singer : "10cm"},
+    {music : "스토커", singer : "10cm"}
 ];
 
 const music = document.querySelector("#music span:first-child");

@@ -18,4 +18,4 @@ function onGeoOK(position)
     alert("Can't find you. No weather for you.")
  }
 
- navigator.geolocation.getCurrentPosition(onGeoOK, onGeoError); 
+ navigator.geolocation.getCurrentPosition(onGeoOK, onGeoError);
