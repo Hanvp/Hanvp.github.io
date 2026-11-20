@@ -5,64 +5,282 @@
   <meta charset="UTF-8">
   <meta name="viewport"
         content="width=device-width, initial-scale=1">
-  <title>진호와 예지의 이야기</title>
+  <title>진호와 예지의 결혼식</title>
+
+  <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+  <link rel="preconnect"
+        href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Great+Vibes&display=swap"
+    rel="stylesheet">
+
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
-      background: black;
-      width: 100%;
       min-height: 100vh;
-      min-height: 100dvh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      background: #faf7f2;
+      color: #44382e;
+      font-family: "Gowun Batang", serif;
     }
 
-    video {
+    .container {
       width: 100%;
-      max-height: 100dvh;
-      object-fit: contain;
+      max-width: 520px;
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: 58px 24px 45px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      background:
+        radial-gradient(
+          ellipse at center,
+          #fffdf9 0%,
+          #faf7f2 100%
+        );
     }
 
-    #playButton {
+    /* 꽃 장식 */
+    .flower {
       position: absolute;
-      padding: 18px 28px;
-      border: none;
-      border-radius: 40px;
-      background: rgba(255,255,255,.95);
-      color: #222;
-      font-size: 17px;
-      cursor: pointer;
+      font-size: 62px;
+      opacity: 0.38;
+      pointer-events: none;
+    }
+
+    .flower.top {
+      top: 5px;
+      left: -12px;
+      transform: rotate(-25deg);
+    }
+
+    .flower.bottom {
+      right: -10px;
+      bottom: 5px;
+      transform: rotate(25deg);
+    }
+
+    .date {
+      font-family: Georgia, serif;
+      font-size: 13px;
+      letter-spacing: 4px;
+      color: #92795f;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(25px, 6vw, 34px);
+      font-weight: 700;
+      line-height: 1.6;
+      word-break: keep-all;
+    }
+
+    .subtitle {
+      font-family: "Great Vibes", cursive;
+      font-size: 38px;
+      color: #9c8064;
+      margin-top: 10px;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 35px 0;
+      color: #c5aa8a;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: #d7c6b2;
+    }
+
+    /* 버튼 */
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .button {
+      min-height: 92px;
+      width: 100%;
+      padding: 18px 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-family: "Gowun Batang", serif;
+      font-size: clamp(17px, 4.6vw, 22px);
+      font-weight: 700;
+      word-break: keep-all;
+      transition: transform 0.2s;
+    }
+
+    .button:active {
+      transform: scale(0.98);
+    }
+
+    .button.video {
+      background: #716050;
+      color: #ffffff;
+      border: 1px solid #716050;
+      box-shadow: 0 4px 12px
+        rgba(75, 55, 35, 0.12);
+    }
+
+    .button.live {
+      background: #fffdf9;
+      color: #44382e;
+      border: 2px solid #b49a7a;
+    }
+
+    .button-icon {
+      font-family: sans-serif;
+      font-size: 26px;
+      flex-shrink: 0;
+    }
+
+    /* 안내문 */
+    .notice {
+      background: #f1e9df;
+      border-radius: 24px;
+      padding: 27px 20px;
+      text-align: left;
+    }
+
+    .notice-title {
+      font-size: 19px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .notice p {
+      margin: 0 0 12px;
+      font-size: 15px;
+      line-height: 1.9;
+      word-break: keep-all;
+    }
+
+    .warning {
+      margin-top: 20px;
+      padding: 17px 12px;
+      background: #f7e2db;
+      border-radius: 18px;
+      color: #9b4738;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.7;
+      text-align: center;
+      word-break: keep-all;
+    }
+
+    footer {
+      margin-top: 45px;
+      font-family: Georgia, serif;
+      letter-spacing: 5px;
+      font-size: 14px;
+      color: #93785f;
+    }
+
+    @media (max-width: 380px) {
+      .container {
+        padding: 48px 18px 35px;
+      }
+
+      .button {
+        min-height: 85px;
+        border-radius: 20px;
+      }
+
+      .notice {
+        padding: 23px 17px;
+      }
     }
   </style>
 </head>
+
 <body>
-  <video id="video" playsinline preload="metadata">
-    <source
-      src="./장진호_김예지_식전영상v1.0.mp4"
-      type="video/mp4">
-  </video>
+  <main class="container">
 
-  <button id="playButton">
-    ▶ 진호와 예지의 이야기 시작하기
-  </button>
+    <!-- 꽃 장식 -->
+    <div class="flower top"
+         aria-hidden="true">🌿🤍</div>
+    <div class="flower bottom"
+         aria-hidden="true">🤍🌿</div>
 
-  <script>
-    const video = document.getElementById("video");
-    const button = document.getElementById("playButton");
+    <!-- 제목 -->
+    <div class="date">
+      NOVEMBER 21, 2026
+    </div>
 
-    button.addEventListener("click", async () => {
-      try {
-        await video.play();
-        video.controls = true;
-        button.style.display = "none";
-      } catch (error) {
-        video.controls = true;
-        console.error(error);
-      }
-    });
-  </script>
+    <h1>진호와 예지의 결혼식</h1>
+
+    <div class="subtitle">
+      Wedding Day
+    </div>
+
+    <div class="divider"
+         aria-hidden="true">♥</div>
+
+    <!-- 버튼 -->
+    <div class="buttons">
+
+      <a class="button video"
+         href="./장진호_김예지_식전영상v1.0.mp4">
+        <span class="button-icon">▶</span>
+        <span>식전 영상 보기</span>
+      </a>
+
+      <a class="button live"
+         href="https://meet.google.com/zhu-tovi-osx">
+        <span class="button-icon">▣</span>
+        <span>실시간 식 진행상황 보기</span>
+      </a>
+
+    </div>
+
+    <!-- 안내문 -->
+    <section class="notice">
+
+      <div class="notice-title">
+        ◷ 14:50부터 실시간 중계
+      </div>
+
+      <p>
+        <strong>14:50부터</strong>
+        구글 미트(Google Meet)를 통해
+        실시간으로 식이 중계됩니다.
+      </p>
+
+      <p>
+        연회장에 계신 분들께서는
+        필요 시 접속해주세요.
+      </p>
+
+      <div class="warning">
+        🎙 마이크, 동영상 모두 끈 채로
+        입장해주세요.
+      </div>
+
+    </section>
+
+    <footer>
+      JINHO &amp; YEJI
+    </footer>
+
+  </main>
 </body>
 </html>
